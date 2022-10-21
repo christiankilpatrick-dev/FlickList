@@ -15,9 +15,13 @@
     />
 </head>
 <body>
-  <br>
-  <div id="homeButton">
-    <a class="home button" href="/">Home</a>
+  <div class="homeButtons">
+    <div id="homeButton">
+      <a class="home button" href="/">Home</a>
+    </div>
+    <div id="logoutButton">
+      <a id="logout" href="/logout">Logout</a>
+    </div>
   </div>
   
   <div class="header" id="header">
@@ -27,14 +31,12 @@
 
   <div id = "moviesToWatchHeader">
     <h4>Movies to Watch</h4>
-
-    <h2><%= user.userName %> has <%= left %> movie(s) left to watch.</h2>
   </div>
     
 
     <form action="/todos/createTodo" method='POST' id="form">
         <input type="text" placeholder="Enter Movie" name='todoItem'>
-        <input type="text" placeholder="Enter Movie Genre" name='movieGenre'>
+        <input id = 'genreInput' type="text" placeholder="Enter Movie Genre" name='movieGenre'>
         <div id="inputBut"><input type="submit"></div>
         
     </form>
@@ -45,14 +47,14 @@
 
 
 <form action="" method = '' id="formSort">
-  <label for="sort">Sort movies by:</label>
+  <label for="sort">Sort By:</label>
   <select name="sort" id="sortID">
     <option value="oldest" selected>Oldest</option>
     <option value="newest">Newest</option>
     <option value="title">Title</option>
     <option value="genre">Genre</option>
   </select>
-  <label for="genres">Filter movies by genre:</label>
+  <label id = 'sortGenres'for="genres">Search Genres:</label>
   <input type="text" name="genres" id="filterID" placeholder="Enter a Genre">
   <!-- <br><br> -->
   <!-- <input type="submit" value="Sort"> -->
@@ -73,6 +75,7 @@
   <span class="tableHeader">Title:</span>
   <span class="tableHeader">Genre:</span>
 </div> -->
+  <h2 id ='moviesLeft'><%= user.userName %> has <%= left %> movie(s) left to watch.</h2>
   <ul id="watchList">
     <% todos.forEach( el => { %>
             <li class='todoItem' data-id='<%=el._id%>' data-createdat='<%=el.createdDate%>'>
@@ -95,12 +98,6 @@
       <button type="button" onclick="closePopup()">Close</button>
     </div>
     <br>
-    <div id="logoutButton">
-      <a id="logout" href="/logout">Logout</a>
-    </div>
-    
-    
-
 
     <script src="js/main.js"></script>
   
